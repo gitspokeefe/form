@@ -1,0 +1,44 @@
+div.container{
+    padding: 20px;
+}
+
+table{
+    width: 80%;
+    border: 1px solid black;
+    margin-bottom: 25px;
+}
+thead {
+    background-color: lightskyblue;
+}
+tbody {
+    text-align: center;
+}
+tbody > tr:nth-child(even){
+    background-color: lightgray;
+}
+th, td {
+    height: 10px;
+}
+
+.login-container{
+    background-color: lightskyblue;
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 25px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+
+}
+
+.entity-input-container{
+    background-color: lightgray;
+    width: 20%;
+    border: 1px solid grey;
+    border-radius: 25px;
+    position: relative;
+    left: 1%;
+
+}

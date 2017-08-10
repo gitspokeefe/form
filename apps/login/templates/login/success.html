@@ -2,9 +2,65 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Success</title>
+    <title>Entity Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
   </head>
   <body>
-        <p>You have successfully logged in</p>
+      <p>You have successfully logged in</p>
+      <td>| <a href="logout_view">Logout</a>
+      <hr>
+    <div class="entity-input-container">
+        <div class="container">
+        <h3>Add Entity</h3>
+          <form action="/create" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="entity_name">Entity Name</label>
+                  <input type="text" name="entity_name">
+              </div>
+              <div class="form-group">
+                  <label for="state_of_inc">State of Incorporation</label>
+                  <input type="text" name="state_of_inc">
+              </div>
+              <div class="form-group">
+                  <label for="date_of_inc">Date of Incorporation</label>
+                  <input type="date" name="date_of_inc">
+              </div>
+              <input type="submit" value="Update">
+          </form>
+        </div>
+      </div>
+      <div class="container">
+            <h1>Entity</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Entity Name</th>
+                        <th>State of Incorporation</th>
+                        <th>Incorporated At</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ent in ents %}
+                    <tr>
+                        <td>{{ ent.id }}</td>
+                        <td>{{ ent.entity_name }}</td>
+                        <td>{{ ent.state_of_inc }} </td>
+                        <td>{{ ent.date_of_inc }}</td>
+                        <td>{{ ent.created_at }}</td>
+                        <td>{{ ent.updated_at }}</td>
+                        <td>| <a href="/entity/{{ ent.id }}/edit">Edit</a> | <a href="/entity/{{ ent.id }}/destroy">Delete</a> | </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
   </body>
 </html>
